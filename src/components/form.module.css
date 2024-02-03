@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.form {
+  margin-top: 1rem;
+}
+.logindescr {
+  color: #656565;
+  font-size: smaller;
+}
+.input {
+  padding: 10px;
+}
+.inputLable {
+  font-size: 12px;
+}
+.button {
+  background-color: #515def;
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.forgetButton {
+  font-size: 10px;
+  align-self: flex-end;
+  border: none;
+  background-color: #ffffff;
+  color: #ff8682;
+  cursor: pointer;
+}
+.accountDesc {
+  font-size: 12px;
+  align-self: center;
+}
