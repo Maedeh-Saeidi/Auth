@@ -2,10 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { Axios } from "axios";
 import styles from "./form.module.css"
+import SignUp from "./SignUp";
 
-export default function Form({ password, setPassword, phoneNumber, setPhoneNumber }) {
+export default function Form({ password, setPassword, phoneNumber, setPhoneNumber,loggedIn, setLoggedIn }) {
 
   const [login, setLogin] = useState(false);
+
   function handleSubmit(e) {
     e.preventDefault();
     const configuration = {
@@ -20,6 +22,9 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
       .then((result) => { setLogin(true); })
       .catch((error) => { error = new Error(); })
   }
+  const handleSignUpButton = () => {
+    setLoggedIn(!loggedIn)
+  }
   return (
     <div className={styles.container}>
       <h1>Login</h1>
@@ -29,9 +34,9 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
       <form
         className={styles.container + ' ' + styles.form}
         onSubmit={(e) => handleSubmit(e)}>
-        <lable
-        className={styles.inputLable}
-        >Email</lable>
+        <label
+          className={styles.inputLabel}
+        >Email</label>
         <input
           className={styles.input}
           type="tel"
@@ -41,9 +46,9 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
           placeholder="123-456-7890"
         />
         <br />
-        <lable
-          className={styles.inputLable}
-        >Password</lable>
+        <label
+          className={styles.inputLabel}
+        >Password</label>
         <input
           className={styles.input}
           type="password"
@@ -67,7 +72,10 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
       </form>
       <p
         className={styles.accountDesc}
-      >Don't have an account?<span style={{ color: "#FF8682 ", cursor: "pointer"}}>Sign up</span></p>
+      >Don't have an account?<button
+          className={styles.signUpButton}
+          onClick={handleSignUpButton}
+        >Sign up</button></p>
     </div>
   )
 }

@@ -5,16 +5,24 @@ import SignUp from './components/SignUp'
 function App() {
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <>
-      <Login
-        password={password}
-        setPassword={setPassword}
-        phoneNumber={phoneNumber}
-        setPhoneNumber={setPhoneNumber}
-      ></Login>
-      {/* <SignUp></SignUp> */}
+      {
+        loggedIn ? (
+          <Login
+            loggedIn={loggedIn}
+            setLoggedIn= { setLoggedIn}
+            password={password}
+            setPassword={setPassword}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+          ></Login>
+        ) : (
+            <SignUp></SignUp>
+        )
+      }
     </>
   )
 }

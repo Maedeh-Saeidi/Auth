@@ -13,7 +13,7 @@
 .input {
   padding: 10px;
 }
-.inputLable {
+.inputLabel {
   font-size: 12px;
 }
 .button {
@@ -35,4 +35,12 @@
 .accountDesc {
   font-size: 12px;
   align-self: center;
+}
+.signUpButton{
+color: #FF8682;
+cursor: pointer;
+ border: "none";
+ border: none;
+background-color: #ffffff;
+font-size: 10px;
 }
