@@ -19,7 +19,7 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
       }
     }
     axios(configuration)
-      .then((result) => { setLogin(true); })
+      .then((result) => { setLogin(true); console.log(result) })
       .catch((error) => { error = new Error(); })
   }
   const handleSignUpButton = () => {
