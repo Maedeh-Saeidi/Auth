@@ -14,7 +14,7 @@ export default function VerifyCode() {
           className={styles.img}
           src={Images.verifycode}
           alt="Verify code"
-          width={500}
+          width={450}
         />
       </div>
     </div>

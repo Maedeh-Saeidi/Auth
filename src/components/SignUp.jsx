@@ -4,7 +4,7 @@ import axios from "axios";
 import formStyles from "./form.module.css";
 import { useState } from "react";
 
-export default function SignUp({ signedup, setSignedUp }) {
+export default function SignUp({ signedup, setSignedUp, password, setPassword }) {
 
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -34,12 +34,14 @@ export default function SignUp({ signedup, setSignedUp }) {
         <img
           width={400}
           src={Images.signupImage}
+          style={{margin: "0 4rem"}}
           alt="SignUp Image" />
       </div>
       <div className={styles.formContainer}>
         <h1>Sign up</h1>
         <p
           className={formStyles.logindescr}
+          style={{margin:"1.5rem 0"}}
         >Let's get you all st up so you can access your personal account.</p>
         <form
           className={formStyles.container}
@@ -47,7 +49,6 @@ export default function SignUp({ signedup, setSignedUp }) {
         >
           <label
             className={formStyles.inputLabel}
-            style={{}}
           >Phone number</label>
           <input
             className={formStyles.input}
@@ -57,9 +58,17 @@ export default function SignUp({ signedup, setSignedUp }) {
             onChange={(e) => handlePhoneChange(e)}
           >
           </input>
+          <input
+            className={formStyles.input}
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="**********"
+            style={{margin:"1.5rem 0"}}
+          />
           <button
             className={formStyles.button}
-            style={{ marginTop: "1.5rem" }}
             onClick={(e) => handleSubmit(e)}
             type="submit"
           >Send OTP</button>
