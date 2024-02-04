@@ -20,7 +20,7 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
       .then((result) => { setLogin(true); console.log(result) })
       .catch((error) => {
         error = new Error();
-        //the next line does not work !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //the next line does not work!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         console.log(error.response.data.message)
 })
   }

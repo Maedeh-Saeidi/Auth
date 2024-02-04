@@ -3,11 +3,9 @@ import Images from "../images/images";
 import axios from "axios";
 import formStyles from "./form.module.css";
 import { useState } from "react";
-import VerifyCode from "./VerifyCode";
 
-export default function SignUp() {
+export default function SignUp({ signedup, setSignedUp }) {
 
-  const [signnedup, setSignnesUp] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
 
   function handlePhoneChange(e) {
@@ -24,7 +22,7 @@ export default function SignUp() {
       }
     };
     axios(configuration)
-      .then((result) => { setSignnesUp(true); })
+      .then((result) => { setSignedUp(true); })
       .catch((err) => {
         console.error("Error occurred", err);
         console.log(err.response.data.message)
