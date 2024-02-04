@@ -18,9 +18,9 @@ function App() {
             setPassword={setPassword}
             phoneNumber={phoneNumber}
             setPhoneNumber={setPhoneNumber}
-          ></Login>
+          />
         ) : (
-            <SignUp></SignUp>
+            <SignUp/>
         )
       }
     </>

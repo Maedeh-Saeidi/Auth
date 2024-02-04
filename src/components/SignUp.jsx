@@ -1,7 +1,9 @@
-import styles from "./signup.module.css"
+import styles from "./signup.module.css";
 import Images from "../images/images";
 import axios from "axios";
+import formStyles from "./form.module.css";
 import { useState } from "react";
+import VerifyCode from "./VerifyCode";
 
 export default function SignUp() {
 
@@ -23,7 +25,10 @@ export default function SignUp() {
     };
     axios(configuration)
       .then((result) => { setSignnesUp(true); })
-      .catch((err) => { console.error("Error occurred", err); });
+      .catch((err) => {
+        console.error("Error occurred", err);
+        console.log(err.response.data.message)
+      });
   }
   return (
     <div className={styles.container}>
@@ -33,22 +38,30 @@ export default function SignUp() {
           src={Images.signupImage}
           alt="SignUp Image" />
       </div>
-      <div>
+      <div className={styles.formContainer}>
         <h1>Sign up</h1>
-        <p>Let's get you all st up so you can access your personal account.</p>
+        <p
+          className={formStyles.logindescr}
+        >Let's get you all st up so you can access your personal account.</p>
         <form
-          className={styles.form}
+          className={formStyles.container}
           onSubmit={(e) => handleSubmit(e)}
         >
-          <label>Phone number</label>
+          <label
+            className={formStyles.inputLabel}
+            style={{}}
+          >Phone number</label>
           <input
-            placeholder="Enter phone number"
+            className={formStyles.input}
+            placeholder="123-456-7890"
             type="text"
             value={phoneNumber}
             onChange={(e) => handlePhoneChange(e)}
           >
           </input>
           <button
+            className={formStyles.button}
+            style={{ marginTop: "1.5rem" }}
             onClick={(e) => handleSubmit(e)}
             type="submit"
           >Send OTP</button>

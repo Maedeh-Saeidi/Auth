@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Axios } from "axios";
 import styles from "./form.module.css"
-import SignUp from "./SignUp";
 
 export default function Form({ password, setPassword, phoneNumber, setPhoneNumber,loggedIn, setLoggedIn }) {
 
@@ -20,7 +18,11 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
     }
     axios(configuration)
       .then((result) => { setLogin(true); console.log(result) })
-      .catch((error) => { error = new Error(); })
+      .catch((error) => {
+        error = new Error();
+        //the next line does not work !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        console.log(error.response.data.message)
+})
   }
   const handleSignUpButton = () => {
     setLoggedIn(!loggedIn)
@@ -36,7 +38,7 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
         onSubmit={(e) => handleSubmit(e)}>
         <label
           className={styles.inputLabel}
-        >Email</label>
+        >Phone number</label>
         <input
           className={styles.input}
           type="tel"
