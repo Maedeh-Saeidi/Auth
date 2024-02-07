@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styles from "./form.module.css"
 import verifyStyles from "./verifycode.module.css";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
-export default function VerifyForm({ password, phoneNumber }) {
+export default function VerifyForm({ password, phoneNumber, accessToken, setAccessToken, role, setRole }) {
 
   const [code, setCode] = useState("");
+  const[apiMessage, setApiMessage] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,8 +22,16 @@ export default function VerifyForm({ password, phoneNumber }) {
   };
 
   axios(configurations)
-    .then((result) => { console.log(result); })
-    .catch((error) => { console.log(error); })
+    .then((response) => {
+      console.log(response);
+      setAccessToken(response.data.accessToken);
+      setRole(response.data.roles[0]);
+      setApiMessage(response.data.message);
+    })
+    .catch((error) => {
+      console.log(error);
+      setApiMessage(AxiosError.message);
+    })
   }
 return (
   <div>
@@ -52,10 +61,7 @@ return (
         style={{ marginTop: "1.5rem" }}
         type="submit"
       >Verify</button>
-      <h2>informations:</h2>
-      {code}
-      {password}
-      {phoneNumber}
+      {apiMessage && <p>{apiMessage}</p>}
     </form>
   </div>
 

@@ -10,6 +10,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(true);
   const [signedup, setSignedUp] = useState(false);
   const [showVerifyCode, setShowVerifyCode] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     if (signedup) {
@@ -18,7 +20,6 @@ function App() {
       setShowVerifyCode(false);
     }
   }, [signedup])
-
   return (
     <>
       {
@@ -29,6 +30,10 @@ function App() {
           setPassword={setPassword}
           phoneNumber={phoneNumber}
           setPhoneNumber={setPhoneNumber}
+          accessToken={accessToken}
+          setAccessToken={setAccessToken}
+          role={role}
+          setRole={setRole}
         ></Login>
       }
       {
@@ -45,6 +50,10 @@ function App() {
         showVerifyCode && <VerifyCode
           password={password}
           phoneNumber={phoneNumber}
+          accessToken={accessToken}
+          setAccessToken={setAccessToken}
+          role={role}
+          setRole={setRole}
         ></VerifyCode>
       }
     </>

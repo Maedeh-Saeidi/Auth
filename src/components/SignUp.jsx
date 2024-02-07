@@ -20,12 +20,15 @@ export default function SignUp({ signedup, setSignedUp, password, setPassword, p
       }
     };
     axios(configuration)
-      .then((result) => { setSignedUp(true); })
+      .then((result) => {
+        setSignedUp(true);
+        console.log(result);
+        console.log(result.data.message);
+      })
       .catch((err) => {
         console.error("Error occurred", err);
-        console.log(err.response.data.message)
+        console.log(err.response.data.message);
       });
-    {response.message}
   }
   return (
     <div className={styles.container}>
@@ -74,6 +77,5 @@ export default function SignUp({ signedup, setSignedUp, password, setPassword, p
         </form>
       </div>
     </div>
-
   )
 }

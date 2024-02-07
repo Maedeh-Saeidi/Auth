@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import styles from "./form.module.css"
 
-export default function Form({ password, setPassword, phoneNumber, setPhoneNumber,loggedIn, setLoggedIn }) {
+export default function Form({ password, setPassword, phoneNumber, setPhoneNumber, loggedIn, setLoggedIn, accessToken, setAccessToken, role, setRole  }) {
 
   const [login, setLogin] = useState(false);
 
@@ -17,12 +17,17 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
       }
     }
     axios(configuration)
-      .then((result) => { setLogin(true); console.log(result) })
+      .then((result) => {
+        setLogin(true);
+        setAccessToken(result.data.accessToken);
+        setRole(result.data.roles[0]);
+      })
       .catch((error) => {
         error = new Error();
+        console.log(error);
         //the next line does not work!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         console.log(error.response.data.message)
-})
+      })
   }
   const handleSignUpButton = () => {
     setLoggedIn(!loggedIn)
