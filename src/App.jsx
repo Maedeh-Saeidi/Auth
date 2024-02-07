@@ -35,12 +35,17 @@ function App() {
         !loggedIn && !signedup && <SignUp
           signedup={signedup}
           setSignedUp={setSignedUp}
+          phoneNumber={phoneNumber}
+          setPhoneNumber={setPhoneNumber}
           password={password}
           setPassword={setPassword}
         ></SignUp>
       }
       {
-        showVerifyCode && <VerifyCode></VerifyCode>
+        showVerifyCode && <VerifyCode
+          password={password}
+          phoneNumber={phoneNumber}
+        ></VerifyCode>
       }
     </>
   )

@@ -4,9 +4,7 @@ import axios from "axios";
 import formStyles from "./form.module.css";
 import { useState } from "react";
 
-export default function SignUp({ signedup, setSignedUp, password, setPassword }) {
-
-  const [phoneNumber, setPhoneNumber] = useState("");
+export default function SignUp({ signedup, setSignedUp, password, setPassword, phoneNumber, setPhoneNumber }) {
 
   function handlePhoneChange(e) {
     setPhoneNumber(e.target.value);
@@ -27,6 +25,7 @@ export default function SignUp({ signedup, setSignedUp, password, setPassword })
         console.error("Error occurred", err);
         console.log(err.response.data.message)
       });
+    {response.message}
   }
   return (
     <div className={styles.container}>
