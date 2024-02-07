@@ -75,7 +75,8 @@ export default function Form({ password, setPassword, phoneNumber, setPhoneNumbe
           onClick={(e) => handleSubmit(e)}
         >
           Login</button>
-        {login ? alert("Logged in Successfully") : ""}
+        {/* I just comment alert !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
+        {/* {login ? alert("Logged in Successfully") : ""} */}
       </form>
       <p
         className={styles.accountDesc}

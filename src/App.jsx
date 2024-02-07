@@ -3,6 +3,15 @@ import Login from './components/Login'
 import { useEffect, useState } from 'react';
 import SignUp from './components/SignUp'
 import VerifyCode from './components/VerifyCode';
+import Dexie from 'dexie';
+
+const db = new Dexie("credential")
+db.version(1).stores(
+  {
+    user: "accessToken, role"
+  }
+)
+const { user } = db
 
 function App() {
   const [password, setPassword] = useState("");
@@ -20,6 +29,13 @@ function App() {
       setShowVerifyCode(false);
     }
   }, [signedup])
+
+  if (signedup || loggedIn) {
+    user.add({
+      accessToken: accessToken,
+      role: role
+    })
+  }
   return (
     <>
       {
@@ -54,10 +70,11 @@ function App() {
           setAccessToken={setAccessToken}
           role={role}
           setRole={setRole}
+          signedup={signedup}
+          setSignedUp={setSignedUp}
         ></VerifyCode>
       }
     </>
   )
 }
-
 export default App

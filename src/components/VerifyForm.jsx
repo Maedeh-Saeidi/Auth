@@ -3,7 +3,7 @@ import styles from "./form.module.css"
 import verifyStyles from "./verifycode.module.css";
 import axios, { AxiosError } from "axios";
 
-export default function VerifyForm({ password, phoneNumber, accessToken, setAccessToken, role, setRole }) {
+export default function VerifyForm({ password, phoneNumber, accessToken, setAccessToken, role, setRole, signedup, setSignedUp }) {
 
   const [code, setCode] = useState("");
   const[apiMessage, setApiMessage] = useState("");
@@ -26,6 +26,7 @@ export default function VerifyForm({ password, phoneNumber, accessToken, setAcce
       console.log(response);
       setAccessToken(response.data.accessToken);
       setRole(response.data.roles[0]);
+      setSignedUp(true);
       setApiMessage(response.data.message);
     })
     .catch((error) => {
